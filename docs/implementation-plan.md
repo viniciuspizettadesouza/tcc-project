@@ -77,6 +77,18 @@ Critérios de aceite:
 - nenhuma imputação tenta acessar coluna previamente removida;
 - contagens e esquema ficam registrados sem versionar dados.
 
+Decisões adotadas na Fase 2:
+
+- validar o cabeçalho completo antes da leitura dos registros;
+- ler somente a união de 51 colunas necessárias às fases planejadas, em blocos de 100.000 linhas;
+- aplicar os filtros de status e verificação antes das conversões mais custosas;
+- definir `fico` como a média de `fico_range_low` e `fico_range_high`, mantendo ausente quando faltar um limite;
+- não remover nem imputar colunas nesta fase; apenas contabilizar e sinalizar ausência ≥ 90%;
+- usar amostragem determinística por hash de identificador, posição da linha e semente;
+- detectar compressão pela assinatura do arquivo, porque o CSV publicado usa a extensão enganosa `.gzip`;
+- não exibir nem versionar linhas do dataset na CLI ou nos testes;
+- registrar em manifesto apenas hashes e agregados reproduzidos: 2.925.493 × 142, período 2007-06–2020-09 e conteúdo confirmado até Q3.
+
 ## Fase 3 — Análise exploratória
 
 Entregas, na ordem da tese:

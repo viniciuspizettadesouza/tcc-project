@@ -9,6 +9,7 @@
 - Crie toda reconstrução em `notebooks/tcc-reconstructed.ipynb`.
 - Consulte `docs/reconstruction-analysis.md` antes de implementar qualquer fase.
 - Execute `python scripts/verify_source_integrity.py` antes e depois de cada fase.
+- Execute `python -m unittest discover -s tests -v` após alterações no pipeline.
 
 ## Proveniência
 

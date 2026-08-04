@@ -1,0 +1,54 @@
+{
+  "archive": {
+    "file_name": "lending-club-20072020q1.zip",
+    "sha256": "2d11fedfb54381bf0708b41ca906b047349e35957ec9718d790dcff63d692941",
+    "size_bytes": 505408012
+  },
+  "dataset": {
+    "column_count": 142,
+    "file_name": "Loan_status_2007-2020Q3.gzip",
+    "format_detected": "uncompressed CSV",
+    "issue_month_maximum": "2020-09",
+    "issue_month_minimum": "2007-06",
+    "row_count": 2925493,
+    "sha256": "5878af2a088f8ab5214c9337289fb8b5eb6c6338fd3f417b6cdc18513dc6f",
+    "size_bytes": 1773470505
+  },
+  "pipeline_run": {
+    "conversion_errors": {
+      "fico_bounds": 0,
+      "int_rate": 0,
+      "issue_d": 0
+    },
+    "filtered_issue_year_maximum": 2020,
+    "filtered_issue_year_minimum": 2008,
+    "loan_status_counts_before_filter": {
+      "<NA>": 1,
+      "Charged Off": 362548,
+      "Current": 1031016,
+      "Default": 433,
+      "Does not meet the credit policy. Status:Charged Off": 761,
+      "Does not meet the credit policy. Status:Fully Paid": 1988,
+      "Fully Paid": 1497783,
+      "In Grace Period": 10028,
+      "Issued": 2062,
+      "Late (16-30 days)": 2719,
+      "Late (31-120 days)": 16154
+    },
+    "rows_after_status_filter": 1860764,
+    "rows_after_verification_filter": 1272273,
+    "sample_output_rows": 10000,
+    "sample_seed": 42,
+    "sparse_columns_at_or_above_90_percent": [],
+    "verification_counts_after_status_filter": {
+      "Not Verified": 588491,
+      "Source Verified": 734249,
+      "Verified": 538024
+    }
+  },
+  "provenance": {
+    "kaggle_slug": "ethon0426/lending-club-20072020q1",
+    "q1_q3_resolution": "The Kaggle slug says Q1; the published member name and observed maximum issue month establish coverage through 2020Q3.",
+    "validated_at": "2026-08-04"
+  }
+}
