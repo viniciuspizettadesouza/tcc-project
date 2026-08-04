@@ -28,7 +28,11 @@ Não preencher a coluna “resultado reconstruído” sem uma execução reprodu
 | Figura 23 — importância XGBoost | `year` 77, `int_rate` 53 e `monthly_load` 44 por “F score” | por ganho agregado: `int_rate` 0,294044 (1º), `monthly_load` 0,027179 (7º), `year` 0,022651 (10º) | ordenação e medida diferentes | a tese não define o tipo de importância; ganho agregado não é equivalente a contagem/F score | divergente |
 | Redução de atributos XGBoost | queda descrita como pequena, sem valor | 43 → 12 atributos; AUC de teste 0,711818 → 0,706897 | -0,004921 | lista reduzida vem da célula 63, sem seleção pelo teste atual | reproduzido |
 | Apêndice — AUC do XGBoost | 0,91 | máximo observado 0,711818 no teste | -0,198182 | contradiz 0,6547 no corpo e não há execução correspondente | conflitante |
-| Exemplo de taxa — score 750, categoria B | limites 725–825; taxas 13,33%–16,08%; resultado numérico não informado | pendente | pendente | sentido da interpolação ainda ambíguo | não executado |
+| Calibração do XGBoost reduzido | não publicada | AUC 0,706847 antes/depois; Brier 0,218330 → 0,153092 com sigmoide | comparação histórica indisponível | calibração ajustada em partição exclusiva do treino e avaliada no teste intocado | parcial |
+| Categorias de score no teste | categorias A–G; narrativa discute ambos os extremos | A 66.468; B 63.158; C 45.975; D 23.277; E 4.116; F 4; G 0; acima de 900: 51.457 | G ausente e F quase vazia | score de crédito explícito é `(1 − PD calibrada) × 1000`; linhas fora da faixa não são descartadas | divergente |
+| Exemplo de taxa — score 750, categoria B | limites 725–825; taxas 13,33%–16,08%; resultado numérico não informado | 15,3925% a.a.; extremos 725 → 16,08% e 825 → 13,33% | valor reconstruído não comparável a número publicado ausente | direção adotada explicitamente: maior score de crédito recebe menor taxa; PDF não define o sentido | parcial |
+| Campanha de taxa por categoria | texto afirma foco em D/E; única evidência numérica é o exemplo B | oferta implementada somente para B; A e C–G permanecem sem taxa | conflito interno impede implementar D/E | nenhuma faixa de taxa foi inferida sem evidência | conflitante |
+| Figuras 26–29 — taxa, DTI, moradia e aplicação | análises visuais por A–G, incluindo interpretações dos extremos | figuras reexecutadas no teste com categorias da tese; G tem 0 casos e F tem 4 | conclusões sobre extremos não reproduzíveis | probabilidades calibradas e tratamento explícito fora de 175–900 alteram a composição | divergente |
 
 ## Estados permitidos
 

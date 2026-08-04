@@ -80,6 +80,28 @@ class ReconstructedNotebookTests(unittest.TestCase):
         self.assertIn("xgboost_reduced_pipeline", self.code_source)
         self.assertIn("predict_proba", self.code_source)
 
+    def test_phase_6_scores_offers_and_figures_follow_phase_5(self) -> None:
+        headings = [
+            "# Fase 6 — Score e ofertas personalizadas",
+            "## Calibração da probabilidade de inadimplência",
+            "## Scores, categorias e linhas fora da faixa",
+            "## Oferta sustentada e exemplo de score 750",
+            "## Figuras 26–29",
+            "## Resultado e limitações da Fase 6",
+        ]
+        positions = [self.source.index(heading) for heading in headings]
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn("fit_sigmoid_calibrator", self.code_source)
+        self.assertIn("probability_to_scores", self.code_source)
+        self.assertIn("category_b_interest_rate(750)", self.code_source)
+        for title in (
+            "Figura 26 — Taxa de Juros por Categoria de Score",
+            "Figura 27 — DTI por Categoria de Score",
+            "Figura 28 — Tipo de Propriedade por Categoria de Score",
+            "Figura 29 — Tipo de Aplicação por Categoria de Score",
+        ):
+            self.assertIn(title, self.code_source)
+
     def test_notebook_uses_configurable_relative_dataset_path(self) -> None:
         self.assertIn("DATA_PATH_ENV", self.code_source)
         self.assertIn("data/raw/Loan_status_2007-2020Q3.gzip", self.source)
