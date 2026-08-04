@@ -36,6 +36,24 @@ class ReconstructedNotebookTests(unittest.TestCase):
         self.assertIn("FIGURE_TITLES", self.code_source)
         self.assertEqual(list(FIGURE_TITLES), list(range(9, 20)))
 
+    def test_phase_4_deliverables_follow_phase_3(self) -> None:
+        headings = [
+            "# Fase 4 — PoC 1",
+            "## Tabela 7",
+            "## Figura 20",
+            "## Figuras 21–22",
+            "## Sensibilidade",
+        ]
+        positions = [self.source.index(heading) for heading in headings]
+        self.assertEqual(positions, sorted(positions))
+        self.assertGreater(positions[0], self.source.index("## Resultados observados"))
+        for title in (
+            "Total de Aprovados em Cada Campanha",
+            "Pontuação da Campanha 1 (Distância)",
+            "Pontuação da Campanha 2 (Distância)",
+        ):
+            self.assertIn(title, self.code_source)
+
     def test_notebook_uses_configurable_relative_dataset_path(self) -> None:
         self.assertIn("DATA_PATH_ENV", self.code_source)
         self.assertIn("data/raw/Loan_status_2007-2020Q3.gzip", self.source)
