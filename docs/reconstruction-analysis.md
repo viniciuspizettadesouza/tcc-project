@@ -26,21 +26,20 @@ O notebook reconstruído não deve ser iniciado antes de resolver a fundação, 
 | Fonte | Evidência | SHA-256 | Estado |
 |---|---|---|---|
 | `TCC_Vinicius_P_Souza.pdf` | tese final, criada em 22/12/2024 | `abfed8559ee14018fb9204dd061aa6003d6ceb65e6cb63a9722d02e8e3182bdf` | fonte primária |
-| `notebooks/Copy of Trabalho Data Mining.ipynb` | notebook Colab recuperado, 93 células | `7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330` | fonte parcial; não modificar |
-| `notebooks/original-recovered.ipynb` | cópia canônica byte a byte criada na Fase 1 | `7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330` | fonte protegida; não modificar |
+| `notebooks/tcc-recovered-from-colab.ipynb` | artefato do TCC recuperado após a perda do notebook original durante manutenção do Google Colab; 93 células | `7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330` | fonte forense parcial; não modificar |
 | Dataset Lending Club | URL fornecida no plano | não disponível | ausente intencionalmente |
 | Google Drive ID `1eSFQZcaJeFx7rotY-j1b3ymHfApUhHOP` | notebook citado, inacessível | não disponível | apenas referência histórica |
 
 ### Divergências estruturais
 
-- O plano espera `notebooks/original-recovered.ipynb`, mas o arquivo recebido possui outro nome. A Fase 1 resolveu a divergência mantendo ambos como cópias byte a byte verificadas automaticamente.
+- O artefato recuperado foi recebido originalmente como `Copy of Trabalho Data Mining.ipynb` e hoje usa o nome explícito `tcc-recovered-from-colab.ipynb`. A duplicata técnica criada na Fase 1 foi retirada do estado final por não constituir fonte independente; o hash e o histórico Git preservam a auditoria.
 - Não existem notebook reconstruído, ambiente de dependências nem pipeline.
 - O bloqueio Git observado durante a investigação foi resolvido: o projeto agora é um repositório funcional em `main`, rastreando `origin/main`.
 - Antes desta análise não havia README, AGENTS, `.gitignore` nem diretório `docs/`.
 
 ## 3. Proveniência do notebook recuperado
 
-O notebook está no formato 4.0, kernel Python 3, e contém metadados Colab. Dez células preservam `executionInfo` e outputs. Essas execuções registram o nome de usuário **Iuryck Santos**, timestamps de novembro de 2022 e ambiente Python 3.7/Colab. O metadado de proveniência superior também contém um ID de arquivo diferente do Google Drive citado na tese.
+O artefato recuperado do TCC está no formato 4.0, kernel Python 3, e contém metadados Colab. Dez células preservam `executionInfo` e outputs. Essas execuções registram o nome de usuário **Iuryck Santos**, timestamps de novembro de 2022 e ambiente Python 3.7/Colab. O metadado de proveniência superior também contém um ID de arquivo diferente do Google Drive citado na tese. A origem do artefato no processo de recuperação do TCC não transfere automaticamente a autoria desses metadados de execução.
 
 Consequências:
 

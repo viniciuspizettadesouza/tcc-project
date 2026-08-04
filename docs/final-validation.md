@@ -41,8 +41,7 @@ As 14 dependências diretas de execução estão fixadas com `==` em `requiremen
 - SHA-256: `5878af2a088f8ab5214c9337289fb8b5eb6c6338fd3f417b6cdc18513dc6f`;
 - população com status final: 1.860.764;
 - população com status final e renda verificada: 1.272.273;
-- PDF e notebooks recuperados passaram na verificação de hash;
-- as duas cópias recuperadas permanecem byte a byte idênticas.
+- PDF e artefato recuperado do TCC passaram na verificação de tamanho e hash.
 
 O dataset completo continua ignorado pelo Git. A auditoria automática não encontrou dataset, credencial ou modelo binário entre arquivos rastreados ou candidatos a versionamento.
 

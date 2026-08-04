@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import filecmp
 import hashlib
 import json
 from pathlib import Path
@@ -62,15 +61,6 @@ def verify(root: Path) -> list[str]:
             )
         elif actual_size == source["size_bytes"]:
             print(f"OK  {relative_path}  {actual_hash}")
-
-    for received, canonical in manifest.get("exact_copy_pairs", []):
-        received_path = root / received
-        canonical_path = root / canonical
-        if received_path.is_file() and canonical_path.is_file():
-            if not filecmp.cmp(received_path, canonical_path, shallow=False):
-                failures.append(f"files are not byte-identical: {received} != {canonical}")
-            else:
-                print(f"OK  byte-identical: {received} == {canonical}")
 
     return failures
 

@@ -44,7 +44,7 @@ A Figura 9 exclui 2020, seguindo a célula 20 recuperada e reconhecendo que o ar
 - validação do formato do notebook e ausência de outputs de erro;
 - testes unitários do pipeline, funções de EDA e contrato do notebook;
 - Ruff e `git diff --check`;
-- inspeção do diff e confirmação de que os notebooks recuperados não foram alterados.
+- inspeção do diff e confirmação de que o artefato recuperado não foi alterado.
 
 ## Checklist de encerramento
 

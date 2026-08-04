@@ -8,21 +8,20 @@ A fundação foi preparada sem criar o notebook reconstruído, carregar o datase
 
 ## Entregas
 
-- arquivo recebido preservado em `notebooks/Copy of Trabalho Data Mining.ipynb`;
-- cópia canônica byte a byte em `notebooks/original-recovered.ipynb`;
+- artefato recuperado do TCC preservado em `notebooks/tcc-recovered-from-colab.ipynb`, recebido originalmente como `Copy of Trabalho Data Mining.ipynb` após a perda do notebook original no Google Colab;
+- uma cópia técnica foi criada originalmente na Fase 1, mas removida do estado final após a confirmação de que não era fonte independente; sua existência histórica permanece auditável no Git;
 - manifesto de fontes em `provenance/source-manifest.json`;
 - verificador independente em `scripts/verify_source_integrity.py`;
 - dependências diretas fixadas em `requirements.txt` para Python 3.12;
 - instruções local e Colab no README;
-- instruções e análise atualizadas para refletir a resolução do Git e da cópia canônica.
+- instruções e análise atualizadas para distinguir notebook original perdido, artefato recuperado e notebook reconstruído.
 
 ## Evidência de integridade
 
 | Fonte | Tamanho | SHA-256 | Resultado |
 |---|---:|---|---|
 | `TCC_Vinicius_P_Souza.pdf` | 1.854.902 bytes | `abfed8559ee14018fb9204dd061aa6003d6ceb65e6cb63a9722d02e8e3182bdf` | íntegra |
-| notebook recebido | 139.488 bytes | `7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330` | íntegro |
-| cópia canônica | 139.488 bytes | `7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330` | íntegra e byte a byte idêntica |
+| artefato recuperado do TCC | 139.488 bytes | `7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330` | íntegro |
 
 O teste negativo truncou somente uma cópia temporária fora do repositório. O verificador detectou tamanho, hash e equivalência incorretos e terminou com código diferente de zero.
 
@@ -63,7 +62,7 @@ Também foram validados os padrões do `.gitignore` para `data/`, `.env`, `kaggl
 
 - [x] escopo limitado à Fase 1;
 - [x] fonte recebida inalterada;
-- [x] cópia canônica validada;
+- [x] artefato recuperado validado por tamanho e SHA-256;
 - [x] instalação limpa e smoke test executados;
 - [x] documentação atualizada;
 - [x] `git diff --check` sem erros;

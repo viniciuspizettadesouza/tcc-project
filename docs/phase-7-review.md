@@ -46,7 +46,7 @@ Como código, ordem e estado executado não mudaram, os outputs validados da Fas
 - score de risco, score de crédito e taxa aparecem depois dos modelos que os produzem;
 - resultados são sintetizados sem substituir os outputs executados;
 - comparação, limitações e conclusões distinguem reprodução metodológica de equivalência histórica;
-- a seção final separa fonte primária, artefato forense, cópia canônica e reconstrução.
+- a seção final separa fonte primária, notebook original perdido, artefato recuperado e reconstrução.
 
 ## Código reutilizável
 

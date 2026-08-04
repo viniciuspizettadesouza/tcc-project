@@ -29,7 +29,7 @@ Bloqueio registrado na investigação: o `.git/` inicialmente disponível estava
 
 Entregas:
 
-- confirmar a cópia canônica `notebooks/original-recovered.ipynb` sem alterar bytes nem remover o arquivo recebido;
+- confirmar o hash de `notebooks/tcc-recovered-from-colab.ipynb` sem alterar seus bytes nem criar uma segunda fonte;
 - registrar SHA-256 antes e depois da cópia;
 - criar `requirements.txt` ou `pyproject.toml` com versões compatíveis;
 - validar `.gitignore` contra dados, modelos e credenciais;
@@ -38,13 +38,13 @@ Entregas:
 
 Decisões necessárias:
 
-- se o arquivo recebido será preservado no nome atual e duplicado com nome canônico, ou apenas referenciado no nome atual;
+- se o artefato recuperado será preservado e duplicado como controle técnico de integridade, ou apenas verificado pelo hash;
 - versão mínima do Python e estratégia de pinagem;
 - uso de scripts auxiliares em `src/` ou funções autocontidas no notebook.
 
 Decisões adotadas na Fase 1:
 
-- preservar o arquivo recebido e manter uma cópia canônica byte a byte;
+- preservar somente o artefato recuperado do TCC; usar manifesto de hash e histórico Git para integridade, sem manter duplicata no estado final;
 - usar Python 3.12, fixando em `requirements.txt` as dependências diretas validadas nessa versão;
 - usar um script Python independente e um manifesto JSON para verificar as fontes;
 - reservar funções de análise para o notebook ou módulos futuros, conforme a complexidade das próximas fases.
