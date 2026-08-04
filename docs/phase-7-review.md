@@ -67,5 +67,5 @@ O notebook continua delegando leitura, EDA, PoC 1, PoC 2 e score aos módulos de
 - [x] código e outputs preservados;
 - [x] código reutilizável permanece nos módulos;
 - [x] validação integral reservada à Fase 8;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit criado somente após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 7 criado após aprovação (`6b0eca9`).

@@ -4,7 +4,23 @@
 
 Cada fase é uma unidade revisável. A próxima fase só começa depois de: critérios de aceite satisfeitos, revisão do diff, atualização da documentação de resultados, aprovação do responsável e commit próprio.
 
-O estado atual corresponde à **Fase 0 concluída documentalmente**. O notebook reconstruído ainda não deve ser criado nesta fase.
+## Estado de execução
+
+As **Fases 0–8 estão concluídas**. O plano abaixo permanece como registro do escopo e dos critérios usados durante a reconstrução; frases prospectivas descrevem o estado existente quando cada fase foi planejada, não o estado atual do repositório.
+
+| Fase | Estado | Commit de encerramento |
+|---:|---|---|
+| 0 | concluída | `b29ff0b` |
+| 1 | concluída | `9ed7362` |
+| 2 | concluída | `a3890e4` |
+| 3 | concluída | `c10a14d` |
+| 4 | concluída | `49ec59e` |
+| 5 | concluída | `7e5f911` |
+| 6 | concluída | `7c94882` |
+| 7 | concluída | `6b0eca9` |
+| 8 | concluída | `134222c` |
+
+O commit posterior `cc127b8` esclareceu a proveniência e o nome do artefato recuperado sem alterar os resultados da reconstrução.
 
 ## Fase 0 — Investigação forense e planejamento
 
@@ -222,15 +238,15 @@ Critérios de aceite:
 - ambas as PoCs estão presentes;
 - todas as diferenças relevantes estão classificadas como reproduzidas, divergentes, parciais ou irreproduzíveis.
 
-## Revisão ao final de cada fase
+## Revisão consolidada das fases concluídas
 
-Checklist obrigatório:
+Checklist aplicado às Fases 0–8 e consolidado após seus commits de encerramento:
 
-- [ ] escopo limitado à fase;
-- [ ] fonte recuperada inalterada;
-- [ ] testes/execuções anexados ao resumo;
-- [ ] documentação e comparação atualizadas;
-- [ ] `git diff --check` sem erros;
-- [ ] diff revisado pelo responsável;
-- [ ] aprovação recebida antes do commit;
-- [ ] um único commit de fase, sem mudanças alheias.
+- [x] escopo limitado à fase;
+- [x] fonte recuperada inalterada;
+- [x] testes/execuções anexados ao resumo;
+- [x] documentação e comparação atualizadas;
+- [x] `git diff --check` sem erros;
+- [x] diff revisado pelo responsável;
+- [x] aprovação recebida antes do commit;
+- [x] um único commit de fase, sem mudanças alheias.

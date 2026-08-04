@@ -72,6 +72,12 @@ FIGURE_SECTION_MARKERS = (
     "### Figura 25",
     "### Figuras 26–29",
 )
+TABLE_SECTION_MARKERS = (
+    "### Tabelas 3–6",
+    "### Tabela 7",
+    "### Tabela 8",
+    "### Tabela 9",
+)
 
 
 class FinalValidationError(RuntimeError):
@@ -139,6 +145,13 @@ def validate_notebook(path: Path = NOTEBOOK_PATH) -> dict[str, Any]:
         errors.append(
             "missing figure sections: " + ", ".join(missing_figure_sections)
         )
+    missing_table_sections = [
+        marker for marker in TABLE_SECTION_MARKERS if marker not in source
+    ]
+    if missing_table_sections:
+        errors.append(
+            "missing table sections: " + ", ".join(missing_table_sections)
+        )
     if source.count("figsize=") < 15 or "height=550" not in source:
         errors.append("figure dimensions are not explicit for the saved visualizations")
     if source.count("xlabel") < 17 or source.count("ylabel") < 13:
@@ -168,6 +181,7 @@ def validate_notebook(path: Path = NOTEBOOK_PATH) -> dict[str, Any]:
         "png_figure_outputs": png_outputs,
         "plotly_figure_outputs": plotly_outputs,
         "figure_sections": len(FIGURE_SECTION_MARKERS),
+        "table_sections": len(TABLE_SECTION_MARKERS),
         "explicit_figure_dimensions": True,
         "figure_axes_labeled": True,
         "main_sections": len(MAIN_SECTIONS),

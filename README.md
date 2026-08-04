@@ -11,10 +11,10 @@ A reconstrução não é apresentada como cópia byte a byte do notebook perdido
 | Tese | presente | [`TCC_Vinicius_P_Souza.pdf`](TCC_Vinicius_P_Souza.pdf) |
 | Artefato do TCC recuperado do Colab | presente e preservado | [`notebooks/tcc-recovered-from-colab.ipynb`](notebooks/tcc-recovered-from-colab.ipynb); recebido originalmente como `Copy of Trabalho Data Mining.ipynb` após a perda do notebook original durante manutenção do Google Colab |
 | Dataset Lending Club | validado localmente | 2.925.493 × 142; permanece ignorado pelo Git |
-| Notebook reconstruído | implementado e executado | [`notebooks/tcc-reconstructed.ipynb`](notebooks/tcc-reconstructed.ipynb); duas PoCs, Figuras 9–29, resultados e proveniência |
+| Notebook reconstruído | implementado e executado | [`notebooks/tcc-reconstructed.ipynb`](notebooks/tcc-reconstructed.ipynb); duas PoCs, Figuras 9–29, Tabelas 3–9, resultados e proveniência |
 | Pipeline de dados | implementado e validado | execução integral registrada em [`provenance/dataset-manifest.json`](provenance/dataset-manifest.json) |
 | Comparação com a tese | preenchida | resultados classificados em [`docs/result-comparison.md`](docs/result-comparison.md) |
-| Validação automatizada | disponível | testes unitários, integridade das fontes e auditoria final do notebook |
+| Validação automatizada | disponível | testes unitários, integridade das fontes e auditoria final do notebook; Fases 0–8 concluídas |
 
 O notebook original do TCC armazenado no Google Colab foi perdido durante uma manutenção da plataforma. O artefato posteriormente recuperado contém evidência útil para a análise exploratória e para parte da PoC 2, mas não representa sozinho todo o trabalho final descrito na tese. A PoC 1, a regressão logística e a interpolação de taxas de juros, por exemplo, não estão implementadas nele. `tcc-reconstructed.ipynb` é o novo notebook criado pelas etapas documentadas de reconstrução.
 
@@ -244,4 +244,4 @@ A verificação compara o SHA-256 e o tamanho do artefato recuperado do Colab co
 
 O trabalho deve avançar uma fase por vez. Ao final de cada fase: executar as validações previstas, revisar o diff, atualizar a comparação de resultados e solicitar aprovação. O commit da fase só deve ser criado após essa aprovação.
 
-As Fases 0–7 reconstruíram o pipeline, a EDA, as duas PoCs, o score e a narrativa. A Fase 8 valida a execução integral e encerra a reconstrução. Modelos permanecem apenas em memória durante a execução; nenhum binário é versionado.
+As Fases 0–7 reconstruíram o pipeline, a EDA, as duas PoCs, o score e a narrativa. A Fase 8 validou a execução integral e encerrou a reconstrução. Todas as Fases 0–8 estão concluídas; o histórico e os commits de encerramento estão registrados em [`docs/implementation-plan.md`](docs/implementation-plan.md). Modelos permanecem apenas em memória durante a execução; nenhum binário é versionado.

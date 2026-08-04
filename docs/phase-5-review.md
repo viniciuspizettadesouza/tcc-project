@@ -74,5 +74,5 @@ Isso diverge dos F scores 77/53/44 publicados, cujo tipo não é definido. Além
 - [x] seleção reduzida rastreável;
 - [x] Figuras 23–25 e métricas executadas;
 - [x] comparação com a tese atualizada;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit criado somente após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 5 criado após aprovação (`7e5f911`).

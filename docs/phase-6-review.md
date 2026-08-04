@@ -67,5 +67,5 @@ As figuras são análises descritivas do teste e não demonstram causalidade. Co
 - [x] limites, direção e score 750 testados;
 - [x] conflito D/E versus B registrado;
 - [x] Figuras 26–29 executadas com o dataset real;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit criado somente após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 6 criado após aprovação (`7c94882`).

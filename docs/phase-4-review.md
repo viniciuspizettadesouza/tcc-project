@@ -71,5 +71,5 @@ Reutilizar o limiar bruto 20 na escala normalizada aprova todos os elegíveis. I
 - [x] amostra real determinística de 10.000 executada;
 - [x] distância bruta comparada à alternativa normalizada;
 - [x] resultados publicados comparados sem serem forçados;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit criado somente após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 4 criado após aprovação (`49ec59e`).

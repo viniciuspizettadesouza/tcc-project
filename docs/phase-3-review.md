@@ -4,7 +4,7 @@ Data da validação: 4 de agosto de 2026. Commit base: `a3890e4`.
 
 ## Resultado
 
-A análise exploratória foi reconstruída e executada do início ao fim com o dataset real. O notebook apresenta as Figuras 9–19 na ordem e com os títulos da tese, declara a população de cada análise e preserva as fontes recuperadas. Nenhum commit foi criado; a fase aguarda revisão.
+A análise exploratória foi reconstruída e executada do início ao fim com o dataset real. O notebook apresenta as Figuras 9–19 na ordem e com os títulos da tese, declara a população de cada análise e preserva as fontes recuperadas. A fase foi posteriormente aprovada e encerrada no commit `c10a14d`.
 
 ## Populações e renderização
 
@@ -55,5 +55,5 @@ A Figura 9 exclui 2020, seguindo a célula 20 recuperada e reconhecendo que o ar
 - [x] correlações recalculadas na população completa;
 - [x] tabelas sem registros individuais;
 - [x] documentação de comparação atualizada;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit criado somente após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 3 criado após aprovação (`c10a14d`).

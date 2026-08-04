@@ -4,7 +4,7 @@ Data da validação: 4 de agosto de 2026.
 
 ## Resultado
 
-A fundação foi preparada sem criar o notebook reconstruído, carregar o dataset ou executar qualquer modelo. O commit permanece pendente de revisão e aprovação.
+A fundação foi preparada sem criar o notebook reconstruído, carregar o dataset ou executar qualquer modelo. A fase foi posteriormente aprovada e encerrada no commit `9ed7362`.
 
 ## Entregas
 
@@ -66,5 +66,5 @@ Também foram validados os padrões do `.gitignore` para `data/`, `.env`, `kaggl
 - [x] instalação limpa e smoke test executados;
 - [x] documentação atualizada;
 - [x] `git diff --check` sem erros;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit da Fase 1 criado após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 1 criado após aprovação (`9ed7362`).

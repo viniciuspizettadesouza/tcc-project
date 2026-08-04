@@ -7,8 +7,8 @@ Data da validação: 4 de agosto de 2026. Commit base: `6b0eca9`.
 O notebook reconstruído foi executado integralmente em um kernel novo, do primeiro import à última figura, usando o dataset real validado. A execução terminou com código zero em 118,03 segundos e gravou os outputs no próprio notebook.
 
 ```text
-84 células totais
-45 células Markdown
+85 células totais
+46 células Markdown
 39 células de código
 39 células executadas em sequência (1–39)
 0 outputs de erro
@@ -54,6 +54,7 @@ O dataset completo continua ignorado pelo Git. A auditoria automática não enco
 - execução sequencial completa e ausência de erros salvos;
 - 20 outputs PNG e um output Plotly para as Figuras 9–29;
 - títulos de todas as seções de figuras;
+- presença das Tabelas 3–9, com as Tabelas 8–9 reconstruídas em Markdown fundamentado;
 - dimensões explícitas, incluindo a matriz de confusão;
 - eixos rotulados nas visualizações aplicáveis;
 - sementes e referência às versões fixadas;
@@ -70,7 +71,7 @@ O dataset completo continua ignorado pelo Git. A auditoria automática não enco
 - score 750: categoria B e taxa reconstruída de 15,3925% a.a.;
 - categorias calibradas: F com 4 registros, G com 0 e 51.457 scores acima de 900.
 
-Esses resultados coincidem com `docs/result-comparison.md`; nenhum valor foi ajustado após a execução.
+Esses resultados coincidem com `docs/result-comparison.md`; nenhum valor foi ajustado após a execução. A inclusão posterior das Tabelas 8–9 alterou apenas uma célula Markdown e não modificou código, contagens de execução ou outputs salvos.
 
 ## Itens irreproduzíveis
 
@@ -130,5 +131,5 @@ A execução integral deve usar o comando `jupyter nbconvert --execute` document
 - [x] comparação de resultados totalmente classificada;
 - [x] itens irreproduzíveis e limitações registrados;
 - [x] nenhum dataset, segredo ou modelo binário candidato ao Git;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit criado somente após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 8 criado após aprovação (`134222c`).

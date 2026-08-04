@@ -4,6 +4,7 @@ import unittest
 
 from scripts.validate_final_reconstruction import (
     MAIN_SECTIONS,
+    TABLE_SECTION_MARKERS,
     run_final_validation,
 )
 
@@ -22,6 +23,7 @@ class FinalReconstructionValidationTests(unittest.TestCase):
         self.assertEqual(notebook["plotly_figure_outputs"], 1)
         self.assertTrue(notebook["explicit_figure_dimensions"])
         self.assertTrue(notebook["figure_axes_labeled"])
+        self.assertEqual(notebook["table_sections"], len(TABLE_SECTION_MARKERS))
 
     def test_no_prohibited_artifacts_are_tracked(self) -> None:
         repository = self.summary["repository"]
@@ -34,7 +36,7 @@ class FinalReconstructionValidationTests(unittest.TestCase):
 
     def test_all_result_comparisons_have_final_status(self) -> None:
         comparison = self.summary["result_comparison"]
-        self.assertEqual(comparison["classified_items"], 29)
+        self.assertEqual(comparison["classified_items"], 30)
         self.assertEqual(comparison["pending_items"], 0)
 
     def test_readme_covers_local_and_colab_execution(self) -> None:

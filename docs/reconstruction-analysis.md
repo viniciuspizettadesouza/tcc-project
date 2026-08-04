@@ -1,10 +1,12 @@
 # Análise forense da reconstrução
 
+> **Nota de estado:** este documento registra a fotografia forense da Fase 0 e as decisões disponíveis antes da implementação. As Fases 0–8 foram concluídas posteriormente; o estado final está em `docs/final-validation.md`, e os resultados, em `docs/result-comparison.md`. Afirmações como “ausente”, “não existe” e “próximo passo” abaixo devem ser lidas no contexto histórico da investigação.
+
 ## 1. Escopo e conclusão
 
 Foram inspecionadas a tese completa (84 páginas no PDF; 79 páginas numeradas de conteúdo) e todas as 93 células do notebook recuperado (31 Markdown e 62 de código).
 
-Conclusão: a estrutura mínima de fontes existe, mas o conteúdo atual **não basta para executar o plano nem corresponde integralmente à versão final descrita na tese**. O notebook é uma evidência parcial, aparentemente associada a uma execução de 2022, e cobre:
+Conclusão registrada na Fase 0: a estrutura mínima de fontes existia, mas o conteúdo então disponível **não bastava para executar o plano nem correspondia integralmente à versão final descrita na tese**. O notebook recuperado era uma evidência parcial, aparentemente associada a uma execução de 2022, e cobria:
 
 - carregamento e filtros iniciais;
 - quatro visualizações de EDA com outputs preservados;
@@ -19,7 +21,7 @@ Não cobre:
 - várias correlações, gráficos antes/depois e tabelas da tese;
 - pipeline executável do início ao fim.
 
-O notebook reconstruído não deve ser iniciado antes de resolver a fundação, o dataset e as decisões registradas neste documento.
+Naquele momento, o notebook reconstruído não deveria ser iniciado antes de resolver a fundação, o dataset e as decisões registradas neste documento. Essas condições foram atendidas nas fases posteriores.
 
 ## 2. Inventário das fontes
 
@@ -33,7 +35,7 @@ O notebook reconstruído não deve ser iniciado antes de resolver a fundação, 
 ### Divergências estruturais
 
 - O artefato recuperado foi recebido originalmente como `Copy of Trabalho Data Mining.ipynb` e hoje usa o nome explícito `tcc-recovered-from-colab.ipynb`. A duplicata técnica criada na Fase 1 foi retirada do estado final por não constituir fonte independente; o hash e o histórico Git preservam a auditoria.
-- Não existem notebook reconstruído, ambiente de dependências nem pipeline.
+- Na Fase 0, ainda não existiam notebook reconstruído, ambiente de dependências nem pipeline; todos foram implementados posteriormente.
 - O bloqueio Git observado durante a investigação foi resolvido: o projeto agora é um repositório funcional em `main`, rastreando `origin/main`.
 - Antes desta análise não havia README, AGENTS, `.gitignore` nem diretório `docs/`.
 
@@ -225,8 +227,8 @@ Cada seção reconstruída deve ter uma nota Markdown com:
 - **resultado observado:** preenchido somente por execução;
 - **limitação:** diferença de dataset, hipótese ou item irreproduzível.
 
-## 10. Próximo passo autorizado pelo plano
+## 10. Próximo passo autorizado à época
 
-Após revisão e commit da fundação preparada na Fase 1, o próximo passo permitido será exclusivamente a Fase 2 de `docs/implementation-plan.md`.
+Após revisão e commit da fundação preparada na Fase 1, o próximo passo então permitido seria exclusivamente a Fase 2 de `docs/implementation-plan.md`.
 
-Nenhuma implementação do notebook foi realizada nesta etapa.
+Nenhuma implementação do notebook foi realizada durante a investigação forense. As Fases 1–8, já concluídas, materializaram e validaram a reconstrução.

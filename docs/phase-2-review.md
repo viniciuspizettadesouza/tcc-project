@@ -4,7 +4,7 @@ Data da validação: 4 de agosto de 2026. Commit base: `9ed7362`.
 
 ## Resultado
 
-O pipeline foi implementado e validado com fixtures sintéticas e com o dataset real completo. O arquivo externo permanece ignorado; somente seu manifesto agregado foi adicionado. Nenhuma credencial, linha do dataset, notebook reconstruído ou modelo foi criado no repositório. O commit permanece pendente de revisão e aprovação.
+O pipeline foi implementado e validado com fixtures sintéticas e com o dataset real completo. O arquivo externo permanece ignorado; somente seu manifesto agregado foi adicionado. Nenhuma credencial, linha do dataset, notebook reconstruído ou modelo foi criado no repositório durante esta fase. A fase foi posteriormente aprovada e encerrada no commit `a3890e4`.
 
 ## Entregas
 
@@ -98,5 +98,5 @@ git diff --cached --check
 - [x] dados, credenciais e artefatos fora do diff;
 - [x] validações estáticas e dinâmicas aprovadas;
 - [x] execução com o dataset real e manifesto agregado;
-- [ ] diff aprovado pelo responsável;
-- [ ] commit da Fase 2 criado após aprovação.
+- [x] diff aprovado pelo responsável;
+- [x] commit da Fase 2 criado após aprovação (`a3890e4`).
