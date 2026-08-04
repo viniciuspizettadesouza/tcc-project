@@ -18,13 +18,16 @@ Não preencher a coluna “resultado reconstruído” sem uma execução reprodu
 | PoC 1 — aprovados Campanha 2 | quase 90 em amostra de 10.000; a barra da Figura 20 indica aproximadamente 89 | 10 com critérios declarados + distância ≤ 20; 88 usando somente distância | -79 no modo conforme os critérios; -1 no modo somente distância | o resultado publicado só é aproximado quando se ignora a elegibilidade máxima de 35% e se usa a referência forense de 40% na distância | divergente |
 | PoC 1 — Tabela 7 Vinicius/Elder | distâncias C1: 5 e 30000,010433; C2: 30000,004017 e 5; qualificações exclusivas | valores e booleanos reproduzidos com referência forense de utilização 40 na Campanha 2 | referência estrita 35 produz 30000,006933 e 0 na C2 | a regra textual diz máximo 35%, mas os números publicados provam referência 40 no cálculo da distância | reproduzido |
 | PoC 1 — distância normalizada | não publicada | com IQR e limiar 20: todos os 1.790 elegíveis da C1 e 178 da C2 qualificam | limiar bruto não é transferível à nova escala | um limiar normalizado exigiria calibração externa; nenhum valor foi inventado | parcial |
-| XGBoost — ROC AUC, todas as variáveis | 65,47% | pendente | pendente | notebook não preserva output; PDF não esclarece cálculo com probabilidade | não executado |
-| XGBoost — ROC AUC de teste | 0,65 | pendente | pendente | notebook recuperado usa rótulo de classe, método incorreto para curva ROC | não executado |
-| XGBoost — ROC AUC de treino | 0,66 | pendente | pendente | notebook recuperado usa rótulo de classe e treino subamostrado | não executado |
-| Precisão — classe 0 | 0,88 | pendente | pendente | dataset e execução ainda indisponíveis | não executado |
-| Precisão — classe 1 | 0,34 | pendente | pendente | dataset e execução ainda indisponíveis | não executado |
-| Acurácia geral | 0,65 | pendente | pendente | tese chama o valor de “precisão geral” | não executado |
-| Apêndice — AUC do XGBoost | 0,91 | pendente | conflito interno | contradiz 0,6547 no corpo e não há execução correspondente | conflitante |
+| Regressão logística — baseline completo | afirmada pela tese, mas não treinada no notebook recuperado | ROC AUC por probabilidade 0,704407; acurácia 0,637154 | não há resultado histórico executável para comparação | baseline novo, separado do XGBoost e avaliado no teste não balanceado | parcial |
+| XGBoost — ROC AUC, todas as variáveis | 65,47% | 0,711818 por probabilidade; 0,654009 pelo cálculo histórico com rótulos | +0,057118 no cálculo correto; -0,000691 no histórico | o valor publicado é compatível com o uso metodologicamente incorreto de classes observado no notebook | reproduzido |
+| XGBoost reduzido — ROC AUC de teste | 0,65 | 0,706897 por probabilidade; 0,649376 por rótulos | +0,056897 no cálculo correto; -0,000624 no histórico | a reconstrução usa probabilidades na avaliação principal e preserva rótulos apenas para explicar o número histórico | reproduzido |
+| XGBoost reduzido — ROC AUC de treino | 0,66 | 0,709264 por probabilidade no treino original | +0,049264 | a tese usa rótulos e treino subamostrado; a reconstrução usa probabilidades e explicita que treino mede ajuste | divergente |
+| Precisão — classe 0 | 0,88 | 0,872802 | -0,007198 | diferença inferior a um ponto percentual com pipeline corrigido | reproduzido |
+| Precisão — classe 1 | 0,34 | 0,333465 | -0,006535 | diferença inferior a um ponto percentual com pipeline corrigido | reproduzido |
+| Acurácia geral | 0,65 | 0,642593 | -0,007407 | a tese chama o valor de “precisão geral”; reconstrução registra como acurácia | reproduzido |
+| Figura 23 — importância XGBoost | `year` 77, `int_rate` 53 e `monthly_load` 44 por “F score” | por ganho agregado: `int_rate` 0,294044 (1º), `monthly_load` 0,027179 (7º), `year` 0,022651 (10º) | ordenação e medida diferentes | a tese não define o tipo de importância; ganho agregado não é equivalente a contagem/F score | divergente |
+| Redução de atributos XGBoost | queda descrita como pequena, sem valor | 43 → 12 atributos; AUC de teste 0,711818 → 0,706897 | -0,004921 | lista reduzida vem da célula 63, sem seleção pelo teste atual | reproduzido |
+| Apêndice — AUC do XGBoost | 0,91 | máximo observado 0,711818 no teste | -0,198182 | contradiz 0,6547 no corpo e não há execução correspondente | conflitante |
 | Exemplo de taxa — score 750, categoria B | limites 725–825; taxas 13,33%–16,08%; resultado numérico não informado | pendente | pendente | sentido da interpolação ainda ambíguo | não executado |
 
 ## Estados permitidos

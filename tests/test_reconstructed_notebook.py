@@ -20,6 +20,16 @@ class ReconstructedNotebookTests(unittest.TestCase):
         cls.code_source = "\n".join(
             cell.source for cell in cls.notebook.cells if cell.cell_type == "code"
         )
+        cls.phase5_index = next(
+            index
+            for index, cell in enumerate(cls.notebook.cells)
+            if cell.source.startswith("# Fase 5 — PoC 2")
+        )
+        cls.code_source_before_phase5 = "\n".join(
+            cell.source
+            for cell in cls.notebook.cells[: cls.phase5_index]
+            if cell.cell_type == "code"
+        )
 
     def test_phase_3_titles_appear_in_thesis_order(self) -> None:
         headings = [
@@ -54,6 +64,22 @@ class ReconstructedNotebookTests(unittest.TestCase):
         ):
             self.assertIn(title, self.code_source)
 
+    def test_phase_5_models_and_figures_follow_phase_4(self) -> None:
+        headings = [
+            "# Fase 5 — PoC 2",
+            "## Figura 23",
+            "## Redução rastreável",
+            "## Figura 24",
+            "## Figura 25",
+            "## Comparação histórica",
+        ]
+        positions = [self.source.index(heading) for heading in headings]
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn("logistic_baseline_pipeline", self.code_source)
+        self.assertIn("xgboost_full_pipeline", self.code_source)
+        self.assertIn("xgboost_reduced_pipeline", self.code_source)
+        self.assertIn("predict_proba", self.code_source)
+
     def test_notebook_uses_configurable_relative_dataset_path(self) -> None:
         self.assertIn("DATA_PATH_ENV", self.code_source)
         self.assertIn("data/raw/Loan_status_2007-2020Q3.gzip", self.source)
@@ -62,9 +88,9 @@ class ReconstructedNotebookTests(unittest.TestCase):
 
     def test_notebook_avoids_obsolete_or_future_phase_apis(self) -> None:
         self.assertNotIn("distplot", self.code_source)
-        self.assertNotIn("RandomUnderSampler", self.code_source)
-        self.assertNotIn("XGBClassifier", self.code_source)
-        self.assertNotIn("LogisticRegression", self.code_source)
+        self.assertNotIn("RandomUnderSampler", self.code_source_before_phase5)
+        self.assertNotIn("XGBClassifier", self.code_source_before_phase5)
+        self.assertNotIn("LogisticRegression", self.code_source_before_phase5)
 
     def test_saved_execution_has_no_errors(self) -> None:
         code_cells = [cell for cell in self.notebook.cells if cell.cell_type == "code"]
