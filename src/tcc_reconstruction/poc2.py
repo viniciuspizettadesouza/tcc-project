@@ -22,69 +22,19 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from xgboost import XGBClassifier
 
+from .schema import PHASE5_CATEGORICAL_FEATURES, PHASE5_SOURCE_FEATURES
+
 PHASE5_RANDOM_SEED = 1
 PHASE5_TEST_SIZE = 0.20
 
 # The recovered cell 37 and Annex A enumerate 43 items, but one is the target
-# `default`.  These are therefore the 42 original predictors, in source order.
-SOURCE_FEATURES = (
-    "year",
-    "avg_cur_bal",
-    "fico",
-    "loan_amnt",
-    "term",
-    "int_rate",
-    "installment",
-    "sub_grade",
-    "emp_length",
-    "home_ownership",
-    "annual_inc",
-    "purpose",
-    "addr_state",
-    "dti",
-    "earliest_cr_line",
-    "inq_last_6mths",
-    "open_acc",
-    "pub_rec",
-    "initial_list_status",
-    "mths_since_last_major_derog",
-    "application_type",
-    "acc_now_delinq",
-    "tot_cur_bal",
-    "open_acc_6m",
-    "open_act_il",
-    "open_il_12m",
-    "mths_since_rcnt_il",
-    "total_bal_il",
-    "open_rv_12m",
-    "max_bal_bc",
-    "total_cu_tl",
-    "mo_sin_old_il_acct",
-    "mo_sin_old_rev_tl_op",
-    "mo_sin_rcnt_rev_tl_op",
-    "mo_sin_rcnt_tl",
-    "mort_acc",
-    "mths_since_recent_bc",
-    "mths_since_recent_revol_delinq",
-    "num_actv_rev_tl",
-    "num_il_tl",
-    "pct_tl_nvr_dlq",
-    "pub_rec_bankruptcies",
-)
+# ``default``. The shared schema therefore contains 42 predictors in source
+# order; this alias preserves the module's established public contract.
+SOURCE_FEATURES = PHASE5_SOURCE_FEATURES
 DERIVED_FEATURE = "monthly_load"
 MODEL_FEATURES = SOURCE_FEATURES + (DERIVED_FEATURE,)
 
-CATEGORICAL_FEATURES = frozenset(
-    {
-        "term",
-        "sub_grade",
-        "home_ownership",
-        "purpose",
-        "addr_state",
-        "initial_list_status",
-        "application_type",
-    }
-)
+CATEGORICAL_FEATURES = PHASE5_CATEGORICAL_FEATURES
 
 # Recovered cell 63 selected these source-level variables.  The old dummy
 # `TERM 60 months` is represented by its semantic source feature `term`.

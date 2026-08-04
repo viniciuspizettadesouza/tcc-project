@@ -229,6 +229,6 @@ Cada seção reconstruída deve ter uma nota Markdown com:
 
 ## 10. Próximo passo autorizado à época
 
-Após revisão e commit da fundação preparada na Fase 1, o próximo passo então permitido seria exclusivamente a Fase 2 de `docs/implementation-plan.md`.
+Após revisão e commit da fundação preparada na Fase 1, o próximo passo então permitido seria exclusivamente a Fase 2 do plano hoje consolidado em `docs/reconstruction-history.md`.
 
 Nenhuma implementação do notebook foi realizada durante a investigação forense. As Fases 1–8, já concluídas, materializaram e validaram a reconstrução.

@@ -9,18 +9,13 @@ import json
 from pathlib import Path
 from typing import Any
 
-
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = Path("provenance/source-manifest.json")
-CHUNK_SIZE = 1024 * 1024
 
 
 def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
     with path.open("rb") as source:
-        while chunk := source.read(CHUNK_SIZE):
-            digest.update(chunk)
-    return digest.hexdigest()
+        return hashlib.file_digest(source, "sha256").hexdigest()
 
 
 def load_manifest(root: Path) -> dict[str, Any]:

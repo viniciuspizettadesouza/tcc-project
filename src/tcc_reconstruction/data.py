@@ -19,6 +19,8 @@ from typing import Any
 
 import pandas as pd
 
+from .schema import PHASE5_CATEGORICAL_FEATURES, PHASE5_RAW_COLUMNS
+
 DATA_PATH_ENV = "LENDING_CLUB_DATA_PATH"
 DEFAULT_DATA_DIRECTORY = Path("data/raw")
 DEFAULT_CHUNK_SIZE = 100_000
@@ -29,99 +31,33 @@ SUPPORTED_SUFFIXES = frozenset({".csv", ".gz", ".gzip", ".zip"})
 ALLOWED_LOAN_STATUSES = frozenset({"Fully Paid", "Charged Off", "Default"})
 VERIFIED_INCOME_STATUSES = frozenset({"Verified", "Source Verified"})
 
-# Union of the columns required by the thesis EDA, PoC 1, and PoC 2. Reading
-# this subset avoids loading roughly 90 columns that are not used by the plan.
-REQUIRED_COLUMNS = frozenset(
-    {
-        "id",
-        "loan_amnt",
-        "funded_amnt",
-        "term",
-        "int_rate",
-        "installment",
-        "grade",
-        "sub_grade",
-        "emp_length",
-        "home_ownership",
-        "annual_inc",
-        "verification_status",
-        "issue_d",
-        "loan_status",
-        "purpose",
-        "addr_state",
-        "dti",
-        "earliest_cr_line",
-        "inq_last_6mths",
-        "open_acc",
-        "total_acc",
-        "pub_rec",
-        "initial_list_status",
-        "mths_since_last_major_derog",
-        "application_type",
-        "acc_now_delinq",
-        "tot_cur_bal",
-        "open_acc_6m",
-        "open_act_il",
-        "open_il_12m",
-        "mths_since_rcnt_il",
-        "total_bal_il",
-        "open_rv_12m",
-        "max_bal_bc",
-        "total_cu_tl",
-        "mo_sin_old_il_acct",
-        "mo_sin_old_rev_tl_op",
-        "mo_sin_rcnt_rev_tl_op",
-        "mo_sin_rcnt_tl",
-        "mort_acc",
-        "mths_since_recent_bc",
-        "mths_since_recent_revol_delinq",
-        "num_actv_rev_tl",
-        "num_il_tl",
-        "pct_tl_nvr_dlq",
-        "pub_rec_bankruptcies",
-        "avg_cur_bal",
-        "fico_range_low",
-        "fico_range_high",
-        "all_util",
-        "acc_open_past_24mths",
-    }
-)
+# Union of the raw columns required by the thesis EDA, PoC 1, and PoC 2.
+# Phase 5's shared contract lives in ``schema.py``; only phase-specific extras
+# are listed here. Reading this subset avoids roughly 90 unused columns.
+REQUIRED_COLUMNS = frozenset(PHASE5_RAW_COLUMNS) | {
+    "id",
+    "funded_amnt",
+    "grade",
+    "verification_status",
+    "loan_status",
+    "total_acc",
+    "all_util",
+    "acc_open_past_24mths",
+}
 
-STRING_INPUT_COLUMNS = frozenset(
-    {
-        "id",
-        "term",
-        "int_rate",
-        "grade",
-        "sub_grade",
-        "emp_length",
-        "home_ownership",
-        "verification_status",
-        "issue_d",
-        "loan_status",
-        "purpose",
-        "addr_state",
-        "earliest_cr_line",
-        "initial_list_status",
-        "application_type",
-    }
-)
+CATEGORICAL_OUTPUT_COLUMNS = PHASE5_CATEGORICAL_FEATURES | {
+    "grade",
+    "emp_length",
+    "verification_status",
+    "loan_status",
+}
 
-CATEGORICAL_OUTPUT_COLUMNS = frozenset(
-    {
-        "term",
-        "grade",
-        "sub_grade",
-        "emp_length",
-        "home_ownership",
-        "verification_status",
-        "loan_status",
-        "purpose",
-        "addr_state",
-        "initial_list_status",
-        "application_type",
-    }
-)
+STRING_INPUT_COLUMNS = CATEGORICAL_OUTPUT_COLUMNS | {
+    "id",
+    "int_rate",
+    "issue_d",
+    "earliest_cr_line",
+}
 
 
 class DataPipelineError(RuntimeError):
@@ -377,11 +313,8 @@ def validate_schema(
 
 
 def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
     with path.open("rb") as source:
-        while chunk := source.read(1024 * 1024):
-            digest.update(chunk)
-    return digest.hexdigest()
+        return hashlib.file_digest(source, "sha256").hexdigest()
 
 
 def build_dataset_manifest(

@@ -36,7 +36,8 @@
 
 ## Execução por fases
 
-- Implemente apenas uma fase de `docs/implementation-plan.md` por vez.
+- Consulte `docs/reconstruction-history.md` para o protocolo e as decisões das fases concluídas.
+- Para manutenção futura, siga `docs/maintenance.md` e limite cada mudança a uma unidade revisável.
 - Ao final da fase, execute os testes/checagens correspondentes e apresente o diff para revisão.
 - Aguarde aprovação antes de iniciar a próxima fase e antes de criar o commit da fase.
 - Preserve mudanças do usuário e não reescreva histórico.
