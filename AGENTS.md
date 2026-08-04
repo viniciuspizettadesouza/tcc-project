@@ -4,9 +4,11 @@
 
 - Trate `TCC_Vinicius_P_Souza.pdf` como a fonte primária da metodologia final pretendida.
 - Trate `notebooks/Copy of Trabalho Data Mining.ipynb` como artefato forense recuperado.
-- Nunca altere, limpe outputs, reformate ou renomeie silenciosamente o notebook recuperado.
+- Trate `notebooks/original-recovered.ipynb` como cópia canônica byte a byte do artefato forense.
+- Nunca altere, limpe outputs, reformate ou renomeie silenciosamente nenhum dos dois notebooks recuperados.
 - Crie toda reconstrução em `notebooks/tcc-reconstructed.ipynb`.
 - Consulte `docs/reconstruction-analysis.md` antes de implementar qualquer fase.
+- Execute `python scripts/verify_source_integrity.py` antes e depois de cada fase.
 
 ## Proveniência
 

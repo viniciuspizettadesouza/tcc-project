@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "algorithm": "sha256",
+  "sources": [
+    {
+      "path": "TCC_Vinicius_P_Souza.pdf",
+      "role": "primary_thesis",
+      "immutable": true,
+      "size_bytes": 1854902,
+      "sha256": "abfed8559ee14018fb9204dd061aa6003d6ceb65e6cb63a9722d02e8e3182bdf"
+    },
+    {
+      "path": "notebooks/Copy of Trabalho Data Mining.ipynb",
+      "role": "received_forensic_notebook",
+      "immutable": true,
+      "size_bytes": 139488,
+      "sha256": "7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330"
+    },
+    {
+      "path": "notebooks/original-recovered.ipynb",
+      "role": "canonical_forensic_copy",
+      "immutable": true,
+      "size_bytes": 139488,
+      "sha256": "7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330"
+    }
+  ],
+  "exact_copy_pairs": [
+    [
+      "notebooks/Copy of Trabalho Data Mining.ipynb",
+      "notebooks/original-recovered.ipynb"
+    ]
+  ]
+}

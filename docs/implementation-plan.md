@@ -23,7 +23,7 @@ Critérios de aceite:
 - nenhuma fonte original foi modificada;
 - nenhuma alegação de reprodução foi feita sem execução.
 
-Bloqueio antes do primeiro commit: restaurar ou inicializar conscientemente um repositório Git válido. O `.git/` atual está vazio.
+Bloqueio registrado na investigação: o `.git/` inicialmente disponível estava vazio. Situação resolvida antes da Fase 1; o repositório agora está em `main`, rastreando `origin/main`.
 
 ## Fase 1 — Fundação reprodutível
 
@@ -41,6 +41,13 @@ Decisões necessárias:
 - se o arquivo recebido será preservado no nome atual e duplicado com nome canônico, ou apenas referenciado no nome atual;
 - versão mínima do Python e estratégia de pinagem;
 - uso de scripts auxiliares em `src/` ou funções autocontidas no notebook.
+
+Decisões adotadas na Fase 1:
+
+- preservar o arquivo recebido e manter uma cópia canônica byte a byte;
+- usar Python 3.12, fixando em `requirements.txt` as dependências diretas validadas nessa versão;
+- usar um script Python independente e um manifesto JSON para verificar as fontes;
+- reservar funções de análise para o notebook ou módulos futuros, conforme a complexidade das próximas fases.
 
 Critérios de aceite:
 
