@@ -23,7 +23,7 @@ class ReconstructedNotebookTests(unittest.TestCase):
         cls.phase5_index = next(
             index
             for index, cell in enumerate(cls.notebook.cells)
-            if cell.source.startswith("# Fase 5 — PoC 2")
+            if cell.source.startswith("## 9. PoC 2")
         )
         cls.code_source_before_phase5 = "\n".join(
             cell.source
@@ -33,13 +33,13 @@ class ReconstructedNotebookTests(unittest.TestCase):
 
     def test_phase_3_titles_appear_in_thesis_order(self) -> None:
         headings = [
-            "## Figura 9",
-            "## Figuras 10–12",
-            "## Figura 13",
-            "## Figura 14",
-            "## Figura 15",
-            "## Figuras 16–17",
-            "## Figuras 18–19",
+            "### Figura 9",
+            "### Figuras 10–12",
+            "### Figura 13",
+            "### Figura 14",
+            "### Figura 15",
+            "### Figuras 16–17",
+            "### Figuras 18–19",
         ]
         positions = [self.source.index(heading) for heading in headings]
         self.assertEqual(positions, sorted(positions))
@@ -48,11 +48,11 @@ class ReconstructedNotebookTests(unittest.TestCase):
 
     def test_phase_4_deliverables_follow_phase_3(self) -> None:
         headings = [
-            "# Fase 4 — PoC 1",
-            "## Tabela 7",
-            "## Figura 20",
-            "## Figuras 21–22",
-            "## Sensibilidade",
+            "## 8. PoC 1",
+            "### Tabela 7",
+            "### Figura 20",
+            "### Figuras 21–22",
+            "### Sensibilidade",
         ]
         positions = [self.source.index(heading) for heading in headings]
         self.assertEqual(positions, sorted(positions))
@@ -66,12 +66,12 @@ class ReconstructedNotebookTests(unittest.TestCase):
 
     def test_phase_5_models_and_figures_follow_phase_4(self) -> None:
         headings = [
-            "# Fase 5 — PoC 2",
-            "## Figura 23",
-            "## Redução rastreável",
-            "## Figura 24",
-            "## Figura 25",
-            "## Comparação histórica",
+            "## 9. PoC 2",
+            "### Figura 23",
+            "### Redução rastreável",
+            "### Figura 24",
+            "### Figura 25",
+            "### Comparação histórica",
         ]
         positions = [self.source.index(heading) for heading in headings]
         self.assertEqual(positions, sorted(positions))
@@ -82,12 +82,12 @@ class ReconstructedNotebookTests(unittest.TestCase):
 
     def test_phase_6_scores_offers_and_figures_follow_phase_5(self) -> None:
         headings = [
-            "# Fase 6 — Score e ofertas personalizadas",
-            "## Calibração da probabilidade de inadimplência",
-            "## Scores, categorias e linhas fora da faixa",
-            "## Oferta sustentada e exemplo de score 750",
-            "## Figuras 26–29",
-            "## Resultado e limitações da Fase 6",
+            "## 10. Score e taxa personalizada",
+            "### Calibração da probabilidade de inadimplência",
+            "### Scores, categorias e linhas fora da faixa",
+            "### Oferta sustentada e exemplo de score 750",
+            "### Figuras 26–29",
+            "### Resultado e limitações do score",
         ]
         positions = [self.source.index(heading) for heading in headings]
         self.assertEqual(positions, sorted(positions))
@@ -101,6 +101,54 @@ class ReconstructedNotebookTests(unittest.TestCase):
             "Figura 29 — Tipo de Aplicação por Categoria de Score",
         ):
             self.assertIn(title, self.code_source)
+
+    def test_phase_7_narrative_has_all_sections_and_provenance(self) -> None:
+        headings = [
+            "## 1. Descrição do projeto",
+            "## 2. Notas de reprodutibilidade",
+            "## 3. Aquisição do dataset",
+            "## 4. Imports e configuração",
+            "## 5. Carregamento e populações analíticas",
+            "## 6. Análise exploratória dos dados",
+            "## 7. Limpeza e pré-processamento",
+            "## 8. PoC 1",
+            "## 9. PoC 2",
+            "## 10. Score e taxa personalizada",
+            "## 11. Resultados",
+            "## 12. Comparação com a tese",
+            "## 13. Limitações",
+            "## 14. Conclusões",
+            "## 15. Proveniência e notas de reconstrução",
+        ]
+        positions = [self.source.index(heading) for heading in headings]
+        self.assertEqual(positions, sorted(positions))
+        for heading in headings:
+            cell = next(
+                cell
+                for cell in self.notebook.cells
+                if cell.cell_type == "markdown" and heading in cell.source
+            )
+            self.assertIn("**Tipo:**", cell.source)
+
+    def test_phase_7_preserves_definition_before_use(self) -> None:
+        code_cells = [
+            (index, cell.source)
+            for index, cell in enumerate(self.notebook.cells)
+            if cell.cell_type == "code"
+        ]
+
+        def code_index(fragment: str) -> int:
+            return next(index for index, source in code_cells if fragment in source)
+
+        self.assertLess(code_index("DATASET_PATH ="), code_index("pipeline_result ="))
+        self.assertLess(
+            code_index("verified_loans ="),
+            code_index("prepare_supervised_data(verified_loans)"),
+        )
+        self.assertLess(
+            code_index("xgboost_reduced_pipeline ="),
+            code_index("fit_sigmoid_calibrator("),
+        )
 
     def test_notebook_uses_configurable_relative_dataset_path(self) -> None:
         self.assertIn("DATA_PATH_ENV", self.code_source)
