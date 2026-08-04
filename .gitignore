@@ -1,0 +1,43 @@
+# Dados e arquivos grandes
+data/
+*.csv
+*.csv.gz
+*.gzip
+*.parquet
+*.zip
+*.7z
+
+# Credenciais
+kaggle.json
+.env
+.env.*
+!.env.example
+
+# Modelos e artefatos gerados
+models/
+artifacts/
+outputs/
+*.joblib
+*.pkl
+*.pickle
+*.ubj
+*.jsonl
+
+# Jupyter e Python
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Ambientes locais
+.venv/
+venv/
+
+# Editores e sistema operacional
+.DS_Store
+.idea/
+.vscode/

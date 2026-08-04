@@ -1,0 +1,41 @@
+# Instruções para a reconstrução
+
+## Escopo e fontes
+
+- Trate `TCC_Vinicius_P_Souza.pdf` como a fonte primária da metodologia final pretendida.
+- Trate `notebooks/Copy of Trabalho Data Mining.ipynb` como artefato forense recuperado.
+- Nunca altere, limpe outputs, reformate ou renomeie silenciosamente o notebook recuperado.
+- Crie toda reconstrução em `notebooks/tcc-reconstructed.ipynb`.
+- Consulte `docs/reconstruction-analysis.md` antes de implementar qualquer fase.
+
+## Proveniência
+
+- Identifique código como recuperado, adaptado ou novo na documentação/Markdown do notebook reconstruído.
+- Não atribua ao autor da tese metadados de execução pertencentes a terceiros.
+- Não fabrique métricas, figuras, tabelas ou equivalência exata.
+- Registre divergências entre tese, notebook recuperado e nova execução em `docs/result-comparison.md`.
+
+## Segurança dos dados
+
+- Não versione dataset completo, amostras com dados potencialmente sensíveis, modelos binários, credenciais, tokens Kaggle ou arquivos temporários grandes.
+- Use caminho configurável para o dataset; não introduza caminhos locais absolutos.
+- Valide o esquema antes de iniciar processamento custoso.
+- Prefira leitura com seleção de colunas, tipos explícitos e amostragem determinística para desenvolvimento.
+
+## Qualidade do código e da análise
+
+- Fixe sementes aleatórias e registre versões das dependências.
+- Separe treino e teste antes de ajustar imputadores, codificadores, escaladores, seleção de atributos ou reamostragem.
+- Aplique balanceamento somente ao conjunto de treino.
+- Use probabilidades ou `decision_function` para ROC e ROC AUC; não use rótulos de classe.
+- Mantenha uma regressão logística como baseline interpretável e XGBoost como modelo não linear; não confunda previsões de um com as do outro.
+- Explique o sentido do score: maior score de crédito deve significar menor risco, ou o valor deve ser nomeado explicitamente como score de risco.
+- Não use APIs obsoletas registradas na análise forense.
+
+## Execução por fases
+
+- Implemente apenas uma fase de `docs/implementation-plan.md` por vez.
+- Ao final da fase, execute os testes/checagens correspondentes e apresente o diff para revisão.
+- Aguarde aprovação antes de iniciar a próxima fase e antes de criar o commit da fase.
+- Preserve mudanças do usuário e não reescreva histórico.
+- Quando solicitado um commit, use uma mensagem objetiva e entregue também o comando completo e copiável.
