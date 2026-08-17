@@ -4,18 +4,20 @@
 
 - Trate `TCC_Vinicius_P_Souza.pdf` como a fonte primária da metodologia final pretendida.
 - Trate `notebooks/tcc-recovered-from-colab.ipynb` como o artefato do TCC recuperado após a perda do notebook original durante uma manutenção do Google Colab.
-- Nunca altere, limpe outputs, reformate ou renomeie silenciosamente o artefato recuperado.
-- Crie toda reconstrução em `notebooks/tcc-reconstructed.ipynb`.
+- Trate `notebooks/tcc-reconstructed.ipynb` como o registro histórico imutável da reconstrução concluída nas Fases 0–8.
+- Nunca altere, limpe outputs, reformate, renomeie ou reexecute in-place nenhum dos dois notebooks históricos.
+- Crie toda evolução metodológica em `notebooks/tcc-evolved.ipynb`; o notebook reconstruído não é mais o artefato ativo.
 - Consulte `docs/reconstruction-analysis.md` antes de implementar qualquer fase.
 - Execute `python scripts/verify_source_integrity.py` antes e depois de cada fase.
 - Execute `python -m unittest discover -s tests -v` após alterações no pipeline.
 
 ## Proveniência
 
-- Identifique código como recuperado, adaptado ou novo na documentação/Markdown do notebook reconstruído.
+- Identifique código como recuperado, adaptado ou novo na documentação/Markdown do notebook evolutivo.
 - Não atribua ao autor da tese metadados de execução pertencentes a terceiros.
 - Não fabrique métricas, figuras, tabelas ou equivalência exata.
 - Registre divergências entre tese, notebook recuperado e nova execução em `docs/result-comparison.md`.
+- Registre resultados posteriores ao encerramento da reconstrução em `docs/evolution-results.md`, sem reclassificar a comparação histórica.
 
 ## Segurança dos dados
 
@@ -37,6 +39,7 @@
 ## Execução por fases
 
 - Consulte `docs/reconstruction-history.md` para o protocolo e as decisões das fases concluídas.
+- Consulte `docs/evolution-history.md` para as fases E0 em diante.
 - Para manutenção futura, siga `docs/maintenance.md` e limite cada mudança a uma unidade revisável.
 - Ao final da fase, execute os testes/checagens correspondentes e apresente o diff para revisão.
 - Aguarde aprovação antes de iniciar a próxima fase e antes de criar o commit da fase.

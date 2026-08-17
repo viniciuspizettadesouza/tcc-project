@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_HTML_PATH = REPOSITORY_ROOT / "artifacts" / "html" / "tcc-reconstructed.html"
+DEFAULT_HTML_PATH = REPOSITORY_ROOT / "artifacts" / "html" / "tcc-evolved.html"
 
 FORBIDDEN_PATH_FRAGMENTS = (
     "/content/",

@@ -20,7 +20,11 @@ class StandardProjectCommandsTests(unittest.TestCase):
             "validate",
             "validate-html",
             "notebook",
+            "notebook-evolved",
+            "reproduce-reconstructed",
             "export",
+            "export-evolved",
+            "export-reconstructed",
         ):
             with self.subTest(target=target):
                 self.assertIn(f"\n{target}:\n", self.makefile)
@@ -31,6 +35,7 @@ class StandardProjectCommandsTests(unittest.TestCase):
             "-m unittest discover -s tests -v",
             "scripts/verify_source_integrity.py",
             "scripts/validate_final_reconstruction.py",
+            "scripts.validate_evolved_notebook",
             "-m pip check",
             "git diff --check",
         )
@@ -52,11 +57,20 @@ class StandardProjectCommandsTests(unittest.TestCase):
         )
         self.assertIn("--execute", self.makefile)
         self.assertIn("--inplace", self.makefile)
+        self.assertIn('--inplace "$(EVOLVED_NOTEBOOK)"', self.makefile)
+        self.assertNotIn('--inplace "$(HISTORICAL_NOTEBOOK)"', self.makefile)
+
+    def test_historical_reproduction_uses_disposable_script(self) -> None:
+        self.assertIn("scripts.reproduce_historical_notebook", self.makefile)
+        self.assertNotIn(
+            '--execute --inplace "$(HISTORICAL_NOTEBOOK)"', self.makefile
+        )
 
     def test_export_is_local_and_ignored(self) -> None:
         self.assertIn("EXPORT_DIR := artifacts/html", self.makefile)
         self.assertIn("scripts/export_notebook_html.py", self.makefile)
-        self.assertIn('--output "$(HTML_EXPORT)"', self.makefile)
+        self.assertIn('--output "$(EVOLVED_HTML_EXPORT)"', self.makefile)
+        self.assertIn('--output "$(HISTORICAL_HTML_EXPORT)"', self.makefile)
         gitignore = GITIGNORE_PATH.read_text(encoding="utf-8")
         self.assertIn("artifacts/", gitignore)
 

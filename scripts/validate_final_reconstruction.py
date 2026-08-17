@@ -277,7 +277,9 @@ def validate_readme(path: Path = README_PATH) -> dict[str, Any]:
         "## Execução local completa",
         "## Execução no Google Colab",
         "notebooks/tcc-reconstructed.ipynb",
+        "notebooks/tcc-evolved.ipynb",
         "scripts/validate_final_reconstruction.py",
+        "scripts.validate_evolved_notebook",
         "LENDING_CLUB_DATA_PATH",
         "--ExecutePreprocessor.timeout=1800",
     )

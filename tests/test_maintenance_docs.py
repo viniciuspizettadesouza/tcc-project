@@ -8,6 +8,9 @@ MAINTENANCE_PATH = REPOSITORY_ROOT / "docs" / "maintenance.md"
 README_PATH = REPOSITORY_ROOT / "README.md"
 EXPECTED_DOCUMENTS = {
     "data-guide.md",
+    "evolution-history.md",
+    "evolution-results.md",
+    "evolution-scope.md",
     "final-validation.md",
     "maintenance.md",
     "reconstruction-analysis.md",
@@ -68,17 +71,18 @@ class MaintenanceDocumentationTests(unittest.TestCase):
 
     def test_readme_links_maintenance_guide(self) -> None:
         self.assertIn("docs/maintenance.md", self.readme)
+        self.assertIn("docs/evolution-history.md", self.readme)
 
-    def test_maintenance_records_final_evidence(self) -> None:
-        for stage in range(1, 8):
-            with self.subTest(stage=stage):
-                self.assertIn(f"| {stage} |", self.maintenance)
-        self.assertIn(
-            "fe107c6d780ebd948a0ba3c3a8f9f185c3190c229027bac67c5fb6e3af1c0648",
-            self.maintenance,
-        )
-        self.assertIn("## Histórico do fortalecimento", self.maintenance)
-        self.assertIn("39/39 células", self.maintenance)
+    def test_maintenance_preserves_current_evolution_rules(self) -> None:
+        for fragment in (
+            "notebooks/tcc-evolved.ipynb",
+            "único ponto de entrada",
+            "make reproduce-reconstructed",
+            "cópia temporária",
+            "não escolha modelo, corte ou limiar pelo teste",
+        ):
+            with self.subTest(fragment=fragment):
+                self.assertIn(fragment, self.maintenance)
 
     def test_documentation_has_the_consolidated_structure(self) -> None:
         documents = {path.name for path in (REPOSITORY_ROOT / "docs").glob("*.md")}

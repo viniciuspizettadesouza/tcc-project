@@ -18,6 +18,17 @@ class ProtectedSourceIntegrityTests(unittest.TestCase):
             "7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330",
         )
 
+    def test_reconstructed_notebook_hash_is_pinned(self) -> None:
+        manifest = load_manifest(REPOSITORY_ROOT)
+        sources = {source["path"]: source for source in manifest["sources"]}
+        reconstructed = sources["notebooks/tcc-reconstructed.ipynb"]
+        self.assertTrue(reconstructed["immutable"])
+        self.assertEqual(reconstructed["role"], "completed_reconstruction_snapshot")
+        self.assertEqual(
+            reconstructed["sha256"],
+            "4b9f385dd51a798248dd6bfcbf0ad2e8815f90de7bc5fb59cd98a7431057d044",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

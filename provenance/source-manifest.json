@@ -16,6 +16,14 @@
       "immutable": true,
       "size_bytes": 139488,
       "sha256": "7c58b4b0d0a9cae0accd49f77cd46fd8fd02316961ec588394463b5e9456f330"
+    },
+    {
+      "path": "notebooks/tcc-reconstructed.ipynb",
+      "role": "completed_reconstruction_snapshot",
+      "provenance_note": "Final Phase 8 reconstruction preserved as a historical record; future methodological work continues only in notebooks/tcc-evolved.ipynb",
+      "immutable": true,
+      "size_bytes": 1139562,
+      "sha256": "4b9f385dd51a798248dd6bfcbf0ad2e8815f90de7bc5fb59cd98a7431057d044"
     }
   ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export the saved reconstructed notebook to a complete, audited local HTML."""
+"""Export one saved project notebook to a complete, audited local HTML."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ except ModuleNotFoundError:  # Support direct execution from the scripts directo
     )
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_NOTEBOOK_PATH = REPOSITORY_ROOT / "notebooks" / "tcc-reconstructed.ipynb"
+DEFAULT_NOTEBOOK_PATH = REPOSITORY_ROOT / "notebooks" / "tcc-evolved.ipynb"
 PLOTLY_MIME_TYPE = "application/vnd.plotly.v1+json"
 
 
